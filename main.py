@@ -1,6 +1,8 @@
 import openpyxl
 import os
 import pyautogui
+import subprocess
+
 
 # Pegar dados do Excel
 arquivo_excel = openpyxl.load_workbook("arquivo_excel.xlsx")
@@ -30,7 +32,7 @@ with open(file_path, "w") as file:
 # Abrir os softwares
 os.system(f"xdg-open '{file_path}'")
 
-os.system("gnome-calculator")
+subprocess.Popen(["gnome-calculator"])
 
 for valor in lista_valores: 
     pyautogui.write(str(valor))  
