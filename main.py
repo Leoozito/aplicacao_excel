@@ -46,7 +46,7 @@ resultado = pyperclip.paste()
 with open(file_path, 'a') as file:  # Use 'a' para modo de anexação
     file.write(resultado)
 
-célula_resultado = dados.cell(row=2, column=11)  # Por exemplo, adicione à primeira linha da última coluna
+célula_resultado = dados.cell(row=23, column=2)  # Por exemplo, adicione à primeira linha da última coluna
 célula_resultado.value = resultado
 
 # Salve as alterações no arquivo Excel
