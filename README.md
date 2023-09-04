@@ -4,17 +4,19 @@ Para rodar o projeto:
 
 # rodar projeto Windows
 
-```.venv/Scripts/Activate```
 CTRL + J -> terminal
 
-python main.py
+```.venv/Scripts/Activate```
+
+```python main.py```
 
 # rodar projeto Linux
 
-```source .venv/bin/activate```
 CTRL + J -> terminal 
 
-python system_linux.py
+```source .venv/bin/activate```
+
+```python system_linux.py```
 
 # Para instalar todas as dependencias necessarias
 
