@@ -23,7 +23,9 @@ CTRL + J -> terminal
 ```pip install -r requirements.txt```
 
 
-OBS: A funcionalidade da calculadora no Linux , é preciso rodar o comando 
+# OBS: 
+
+A funcionalidade da calculadora no Linux , é preciso rodar o comando 
 
 ```sudo apt-get install xclip```
 
