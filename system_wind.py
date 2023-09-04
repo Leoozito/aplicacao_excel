@@ -36,7 +36,7 @@ time.sleep(2)
 
 # Abre a calculadora do Windows
 subprocess.Popen(["calc.exe"])
-time.sleep(2.5)
+time.sleep(3)
 
 # Loop para inserir valores e calcular
 for i, valor in enumerate(lista_valores):

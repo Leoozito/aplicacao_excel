@@ -1,55 +1,49 @@
-import openpyxl
-import os
-import pyautogui
+from tkinter import *
 import subprocess
-import pyperclip
-import time
 
-# Pegar dados do Excel
-arquivo_excel = openpyxl.load_workbook("arquivo_excel.xlsx")
-dados = arquivo_excel.active
+app = Tk()
+app.title("Total dos Pagamentos Mensais")
+app.geometry("600x320")
+app.configure(background="#008")
 
-total_linhas = dados.max_row
-total_colunas = dados.max_column
+def on_enter(event):
+    event.widget.configure(background="white")  # Muda a cor de fundo para amarelo quando o mouse entra no botão
 
-# Caminho onde será salvo o arquivo
-desktop_path = os.path.expanduser("~/Área de Trabalho")
-nome_arquivo = "relatorio.txt"
-file_path = os.path.join(desktop_path, nome_arquivo)
+def on_leave(event):
+    event.widget.configure(background="yellow")  # Restaura a cor de fundo original (branca) quando o mouse sai do botão
 
-lista_valores = []  # Lista que será randomizada na calculadora
+def executar_arquivo():
+    subprocess.Popen(["python", "system_wind.py"])
 
-with open(file_path, "w") as file:
-    for linha in range(1, total_linhas + 1):  # para manipular cada linha
-        for coluna in range(1, total_colunas + 1):  # para manipular cada coluna
-            celula = dados.cell(row=linha, column=coluna)
-            valor = celula.value
+# # Especifique a cor de fundo original explicitamente como "white"
+# btn1 = Button(app, text="Total 1° Pagamento", background="yellow", foreground="#000")
+# btn1.place(x=220, y=20, width=150, height=30)
+# btn1.bind("<Enter>", on_enter)
+# btn1.bind("<Leave>", on_leave)
 
-            if valor is not None:
-                conteudo = f"linha {linha}, coluna {coluna}: {valor}\n"
-                if type(valor) == int:
-                    lista_valores.append(valor)
-                file.write(conteudo)  # adiciona as informações do Excel no arquivo
+# btn2 = Button(app, text="Total 2° Pagamento", background="yellow", foreground="#000")
+# btn2.place(x=220, y=70, width=150, height=30)
+# btn2.bind("<Enter>", on_enter)
+# btn2.bind("<Leave>", on_leave)
 
-# Abrir os softwares
-os.system(f"xdg-open '{file_path}'")
+# btn3 = Button(app, text="Total 3° Pagamento", background="yellow", foreground="#000")
+# btn3.place(x=220, y=120, width=150, height=30)
+# btn3.bind("<Enter>", on_enter)
+# btn3.bind("<Leave>", on_leave)
 
-subprocess.Popen(["gnome-calculator"])
-for valor in lista_valores:
-    pyautogui.press('+')
-    time.sleep(0.5)  # Aguarde meio segundo entre o pressionamento de '+' e a entrada do valor
-    pyautogui.write(str(valor))
-    pyautogui.press('enter')
+# btn4 = Button(app, text="Total 4° Pagamento", background="yellow", foreground="#000")
+# btn4.place(x=220, y=170, width=150, height=30)
+# btn4.bind("<Enter>", on_enter)
+# btn4.bind("<Leave>", on_leave)
 
-pyautogui.hotkey('ctrl', 'c')
-resultado = pyperclip.paste()
-with open(file_path, 'a') as file:  # Use 'a' para modo de anexação
-    file.write(resultado)
+# btn5 = Button(app, text="Total 5° Pagamento", background="yellow", foreground="#000")
+# btn5.place(x=220, y=220, width=150, height=30)
+# btn5.bind("<Enter>", on_enter)
+# btn5.bind("<Leave>", on_leave)
 
-célula_resultado = dados.cell(row=23, column=2)  # Por exemplo, adicione à primeira linha da última coluna
-célula_resultado.value = resultado
+btn6 = Button(app, text="Total dos Pagamentos Mensais", background="white", foreground="#000", command=executar_arquivo)
+btn6.place(x=180, y=270, width=240, height=50)
+btn6.bind("<Enter>", on_enter)
+btn6.bind("<Leave>", on_leave)
 
-# Salve as alterações no arquivo Excel
-arquivo_excel.save("arquivo_excel.xlsx")
-pyautogui.hotkey('f5')
-os.system(f"xdg-open 'arquivo_excel.xlsx'")
+app.mainloop()
