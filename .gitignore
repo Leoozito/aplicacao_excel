@@ -7,6 +7,9 @@ __pycache__/
 *.py[código]
 *$py.class
 
+# caso seja modificado por dentro, não commita
+arquivo_excel.xlsx 
+
 # Extensões C
 *.então
 
